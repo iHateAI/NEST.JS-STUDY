@@ -8,10 +8,13 @@ import {
   HttpException,
   Param,
   ParseIntPipe,
+  UseInterceptors
 } from '@nestjs/common';
+import { SuccessInterceptor } from 'src/common/interceptors/success.interceptor';
 import { CatsService } from './cats.service';
 
 @Controller('cats')
+@UseInterceptors(SuccessInterceptor)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
